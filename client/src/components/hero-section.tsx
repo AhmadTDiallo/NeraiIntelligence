@@ -4,6 +4,7 @@ import { SiSlack, SiWhatsapp, SiZoom } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { useTypingAnimation } from "@/hooks/use-typing-animation";
+import { useLanguage } from "@/hooks/use-language";
 import { fadeInUp, staggerChildren, hoverLift } from "@/lib/animations";
 
 interface HeroSectionProps {
@@ -17,6 +18,8 @@ export function HeroSection({ onTryNowClick, onWatchDemoClick }: HeroSectionProp
     triggerOnce: true,
   });
 
+  const { t } = useLanguage();
+
   const { displayedText } = useTypingAnimation({
     text: "Meeting summary ready! 🎯",
     speed: 100,
@@ -24,10 +27,10 @@ export function HeroSection({ onTryNowClick, onWatchDemoClick }: HeroSectionProp
   });
 
   const platforms = [
-    { icon: SiSlack, name: "Slack", color: "text-purple-400" },
-    { icon: MessageCircle, name: "Teams", color: "text-cyan-400" },
-    { icon: SiWhatsapp, name: "WhatsApp", color: "text-pink-400" },
-    { icon: SiZoom, name: "Zoom", color: "text-purple-400" },
+    { icon: SiSlack, name: t('platform.slack'), color: "text-purple-400" },
+    { icon: MessageCircle, name: t('platform.teams'), color: "text-cyan-400" },
+    { icon: SiWhatsapp, name: t('platform.whatsapp'), color: "text-pink-400" },
+    { icon: SiZoom, name: t('platform.zoom'), color: "text-purple-400" },
   ];
 
   return (
@@ -48,10 +51,10 @@ export function HeroSection({ onTryNowClick, onWatchDemoClick }: HeroSectionProp
             variants={fadeInUp}
           >
             <span className="block gradient-text animate-gradient">
-              AI That Lives Inside
+              {t('hero.title1')}
             </span>
             <span className="block gradient-text-coral">
-              Your Conversations
+              {t('hero.title2')}
             </span>
           </motion.h1>
           
@@ -60,7 +63,7 @@ export function HeroSection({ onTryNowClick, onWatchDemoClick }: HeroSectionProp
             className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed"
             variants={fadeInUp}
           >
-            Nerai answers questions, summarizes meetings, and gives your team memory — across chat, calls, and platforms
+            {t('hero.subtitle')}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -74,7 +77,7 @@ export function HeroSection({ onTryNowClick, onWatchDemoClick }: HeroSectionProp
                 size="lg"
                 className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white font-semibold text-lg px-8 py-4 rounded-full border-0"
               >
-                Try Nerai Now
+                {t('hero.tryNow')}
               </Button>
             </motion.div>
             
@@ -86,7 +89,7 @@ export function HeroSection({ onTryNowClick, onWatchDemoClick }: HeroSectionProp
                 className="glass-morphism text-white font-semibold text-lg px-8 py-4 rounded-full border-white/20 hover:bg-white/20"
               >
                 <Play className="mr-2 h-5 w-5" />
-                Watch Demo
+                {t('hero.watchDemo')}
               </Button>
             </motion.div>
           </motion.div>

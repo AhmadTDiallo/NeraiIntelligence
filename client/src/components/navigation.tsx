@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Brain, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LanguageSelector } from "@/components/language-selector";
+import { useLanguage } from "@/hooks/use-language";
 
 interface NavigationProps {
   onCTAClick: () => void;
@@ -10,6 +12,7 @@ interface NavigationProps {
 export function Navigation({ onCTAClick }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,30 +55,33 @@ export function Navigation({ onCTAClick }: NavigationProps) {
           </motion.div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <button
               onClick={() => scrollToSection("features")}
               className="text-gray-300 hover:text-white transition-colors duration-200"
             >
-              Features
+              {t('nav.features')}
             </button>
             <button
               onClick={() => scrollToSection("pricing")}
               className="text-gray-300 hover:text-white transition-colors duration-200"
             >
-              Pricing
+              {t('nav.pricing')}
             </button>
             <button
               onClick={() => scrollToSection("about")}
               className="text-gray-300 hover:text-white transition-colors duration-200"
             >
-              About
+              {t('nav.about')}
             </button>
+            
+            <LanguageSelector />
+            
             <Button
               onClick={onCTAClick}
               className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white font-medium px-6 py-2 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg"
             >
-              Try Nerai Now
+              {t('nav.tryNow')}
             </Button>
           </div>
 
@@ -104,20 +110,25 @@ export function Navigation({ onCTAClick }: NavigationProps) {
                 onClick={() => scrollToSection("features")}
                 className="block w-full text-left text-gray-300 hover:text-white transition-colors py-2"
               >
-                Features
+                {t('nav.features')}
               </button>
               <button
                 onClick={() => scrollToSection("pricing")}
                 className="block w-full text-left text-gray-300 hover:text-white transition-colors py-2"
               >
-                Pricing
+                {t('nav.pricing')}
               </button>
               <button
                 onClick={() => scrollToSection("about")}
                 className="block w-full text-left text-gray-300 hover:text-white transition-colors py-2"
               >
-                About
+                {t('nav.about')}
               </button>
+              
+              <div className="flex justify-center py-2">
+                <LanguageSelector />
+              </div>
+              
               <Button
                 onClick={() => {
                   onCTAClick();
@@ -125,7 +136,7 @@ export function Navigation({ onCTAClick }: NavigationProps) {
                 }}
                 className="w-full bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white font-medium py-2 rounded-full"
               >
-                Try Nerai Now
+                {t('nav.tryNow')}
               </Button>
             </div>
           </motion.div>

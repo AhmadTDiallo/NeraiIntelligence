@@ -10,64 +10,65 @@ import {
   Shield 
 } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { useLanguage } from "@/hooks/use-language";
 import { fadeInUp, staggerChildren, hoverLift } from "@/lib/animations";
 
-const features = [
+const getFeatures = (t: (key: string) => string) => [
   {
     icon: Zap,
-    title: "Real-Time AI Responses",
-    description: "Get instant, context-aware AI answers to any question without disrupting your conversation flow or switching apps.",
+    title: t('features.realtime.title'),
+    description: t('features.realtime.description'),
     color: "from-purple-500 to-cyan-500",
-    highlights: ["Instant responses", "Context-aware", "No app switching"],
+    highlights: [t('features.realtime.highlight1'), t('features.realtime.highlight2'), t('features.realtime.highlight3')],
   },
   {
     icon: FileText,
-    title: "Smart Meeting Transcription",
-    description: "Automatically transcribe and intelligently summarize your video calls with key decisions, action items, and participant insights.",
+    title: t('features.transcription.title'),
+    description: t('features.transcription.description'),
     color: "from-cyan-500 to-pink-500",
-    highlights: ["Auto transcription", "Key decisions", "Action items"],
+    highlights: [t('features.transcription.highlight1'), t('features.transcription.highlight2'), t('features.transcription.highlight3')],
   },
   {
     icon: Brain,
-    title: "Session Memory",
-    description: "Maintains context within individual conversations and meetings, ensuring relevant and informed AI responses throughout each session.",
+    title: t('features.memory.title'),
+    description: t('features.memory.description'),
     color: "from-pink-500 to-purple-500",
-    highlights: ["Session context", "Informed responses", "Conversation continuity"],
+    highlights: [t('features.memory.highlight1'), t('features.memory.highlight2'), t('features.memory.highlight3')],
   },
   {
     icon: Network,
-    title: "Multi-Platform Integration",
-    description: "Works seamlessly across Slack, Microsoft Teams, WhatsApp, and Zoom with native integration and consistent experience.",
+    title: t('features.platform.title'),
+    description: t('features.platform.description'),
     color: "from-cyan-500 to-purple-500",
-    highlights: ["4 platforms", "Native integration", "Consistent UX"],
+    highlights: [t('features.platform.highlight1'), t('features.platform.highlight2'), t('features.platform.highlight3')],
   },
   {
     icon: EyeOff,
-    title: "Individual Stealth Mode",
-    description: "Activate Nerai privately during meetings for personal AI assistance and explanations, completely invisible to other participants.",
+    title: t('features.stealth.title'),
+    description: t('features.stealth.description'),
     color: "from-purple-500 to-pink-500",
-    highlights: ["Private activation", "Personal AI prompts", "Invisible to others"],
+    highlights: [t('features.stealth.highlight1'), t('features.stealth.highlight2'), t('features.stealth.highlight3')],
   },
   {
     icon: Combine,
-    title: "Intelligent Summarization",
-    description: "Generate comprehensive yet concise summaries of lengthy conversations, extracting key points and maintaining important context.",
+    title: t('features.summaries.title'),
+    description: t('features.summaries.description'),
     color: "from-cyan-500 to-pink-500",
-    highlights: ["Smart extraction", "Key points", "Context preservation"],
+    highlights: [t('features.summaries.highlight1'), t('features.summaries.highlight2'), t('features.summaries.highlight3')],
   },
   {
     icon: CheckSquare,
-    title: "Automated Action Tracking",
-    description: "Automatically identify, extract, and organize action items from meetings with assignees, deadlines, and priority levels.",
+    title: t('features.actions.title'),
+    description: t('features.actions.description'),
     color: "from-pink-500 to-cyan-500",
-    highlights: ["Auto identification", "Assignee tracking", "Priority levels"],
+    highlights: [t('features.actions.highlight1'), t('features.actions.highlight2'), t('features.actions.highlight3')],
   },
   {
     icon: Shield,
-    title: "Enterprise-Grade Security",
-    description: "Military-grade encryption, SOC 2 compliance, and zero data retention policies ensure your conversations remain private and secure.",
+    title: t('features.security.title'),
+    description: t('features.security.description'),
     color: "from-purple-500 to-cyan-500",
-    highlights: ["Military encryption", "SOC 2 compliant", "Zero retention"],
+    highlights: [t('features.security.highlight1'), t('features.security.highlight2'), t('features.security.highlight3')],
   },
 ];
 
@@ -76,6 +77,9 @@ export function FeaturesSection() {
     threshold: 0.1,
     triggerOnce: true,
   });
+
+  const { t } = useLanguage();
+  const features = getFeatures(t);
 
   return (
     <section id="features" ref={sectionRef} className="py-32 relative">
@@ -87,10 +91,10 @@ export function FeaturesSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
-            Powerful Features
+            {t('features.title')}
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Everything you need to supercharge your team's productivity with AI-powered conversations
+            {t('features.subtitle')}
           </p>
         </motion.div>
 
