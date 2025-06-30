@@ -2,32 +2,29 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { useLanguage } from "@/hooks/use-language";
 import { fadeInUp, staggerChildren } from "@/lib/animations";
 
-const faqs = [
+const getFAQs = (t: (key: string) => string) => [
   {
-    question: "How does Nerai integrate with existing platforms?",
-    answer: "Nerai connects seamlessly through official APIs and webhooks. Setup takes just a few minutes with our guided installation process."
+    question: t('faq.q1'),
+    answer: t('faq.a1')
   },
   {
-    question: "Is my data secure with Nerai?",
-    answer: "Yes, we use bank-level encryption and never store your conversation data. Everything is processed in real-time and discarded immediately after."
+    question: t('faq.q2'),
+    answer: t('faq.a2')
   },
   {
-    question: "Can I use Nerai without others knowing?",
-    answer: "Absolutely! Stealth Mode allows you to get AI assistance privately without any visible indication to other participants."
+    question: t('faq.q3'),
+    answer: t('faq.a3')
   },
   {
-    question: "What languages does Nerai support?",
-    answer: "Nerai supports 40+ languages including English, Spanish, French, German, Japanese, Chinese, and many more."
+    question: t('faq.q4'),
+    answer: t('faq.a4')
   },
   {
-    question: "How accurate are the meeting transcriptions?",
-    answer: "Our AI achieves 95%+ accuracy in transcription across multiple languages and accents, with continuous learning to improve over time."
-  },
-  {
-    question: "Can I customize Nerai's responses?",
-    answer: "Yes, you can train Nerai with your company's specific terminology, tone, and preferences to ensure responses align with your brand voice."
+    question: t('faq.q5'),
+    answer: t('faq.a5')
   },
 ];
 
@@ -84,6 +81,9 @@ export function FAQSection() {
     triggerOnce: true,
   });
 
+  const { t } = useLanguage();
+  const faqs = getFAQs(t);
+
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
@@ -98,7 +98,7 @@ export function FAQSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text-coral">
-            Frequently Asked Questions
+            {t('faq.title')}
           </h2>
         </motion.div>
 

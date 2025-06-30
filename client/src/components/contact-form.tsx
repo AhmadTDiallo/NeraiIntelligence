@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/hooks/use-language";
 import { apiRequest } from "@/lib/queryClient";
 import { insertContactSchema, type InsertContact } from "@shared/schema";
 
@@ -22,6 +23,7 @@ interface ContactFormProps {
 export function ContactForm({ isOpen, onClose, defaultType = "demo" }: ContactFormProps) {
   const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
+  const { t } = useLanguage();
   const queryClient = useQueryClient();
 
   const form = useForm<InsertContact>({
@@ -109,15 +111,15 @@ export function ContactForm({ isOpen, onClose, defaultType = "demo" }: ContactFo
             >
               <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
             </motion.div>
-            <h3 className="text-2xl font-bold text-white mb-2">Thank You!</h3>
+            <h3 className="text-2xl font-bold text-white mb-2">{t('contact.thankYou')}</h3>
             <p className="text-gray-300">
-              We've received your message and will get back to you soon.
+              {t('contact.received')}
             </p>
           </div>
         ) : (
           /* Form State */
           <>
-            <h2 className="text-2xl font-bold text-white mb-6">Get in Touch</h2>
+            <h2 className="text-2xl font-bold text-white mb-6">{t('contact.title')}</h2>
             
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -126,7 +128,7 @@ export function ContactForm({ isOpen, onClose, defaultType = "demo" }: ContactFo
                   name="type"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">I'm interested in</FormLabel>
+                      <FormLabel className="text-white">{t('contact.interested')}</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger className="bg-white/10 border-white/20 text-white">
@@ -134,9 +136,9 @@ export function ContactForm({ isOpen, onClose, defaultType = "demo" }: ContactFo
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="demo">Requesting a demo</SelectItem>
-                          <SelectItem value="sales">Speaking with sales</SelectItem>
-                          <SelectItem value="support">Getting support</SelectItem>
+                          <SelectItem value="demo">{t('contact.demo')}</SelectItem>
+                          <SelectItem value="sales">{t('contact.sales')}</SelectItem>
+                          <SelectItem value="support">{t('contact.support')}</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -149,10 +151,10 @@ export function ContactForm({ isOpen, onClose, defaultType = "demo" }: ContactFo
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Name</FormLabel>
+                      <FormLabel className="text-white">{t('contact.name')}</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Your full name"
+                          placeholder={t('contact.namePlaceholder')}
                           className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
                           {...field}
                         />
@@ -167,11 +169,11 @@ export function ContactForm({ isOpen, onClose, defaultType = "demo" }: ContactFo
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Email</FormLabel>
+                      <FormLabel className="text-white">{t('contact.email')}</FormLabel>
                       <FormControl>
                         <Input
                           type="email"
-                          placeholder="your@email.com"
+                          placeholder={t('contact.emailPlaceholder')}
                           className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
                           {...field}
                         />
@@ -186,10 +188,10 @@ export function ContactForm({ isOpen, onClose, defaultType = "demo" }: ContactFo
                   name="company"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Company (Optional)</FormLabel>
+                      <FormLabel className="text-white">{t('contact.company')}</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Your company name"
+                          placeholder={t('contact.companyPlaceholder')}
                           className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
                           {...field}
                         />
@@ -204,10 +206,10 @@ export function ContactForm({ isOpen, onClose, defaultType = "demo" }: ContactFo
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Message</FormLabel>
+                      <FormLabel className="text-white">{t('contact.message')}</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Tell us about your needs..."
+                          placeholder={t('contact.messagePlaceholder')}
                           className="bg-white/10 border-white/20 text-white placeholder:text-gray-400 min-h-[100px]"
                           {...field}
                         />
@@ -225,12 +227,12 @@ export function ContactForm({ isOpen, onClose, defaultType = "demo" }: ContactFo
                   {contactMutation.isPending ? (
                     <div className="flex items-center space-x-2">
                       <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      <span>Sending...</span>
+                      <span>{t('contact.sending')}</span>
                     </div>
                   ) : (
                     <div className="flex items-center space-x-2">
                       <Send className="w-4 h-4" />
-                      <span>Send Message</span>
+                      <span>{t('contact.send')}</span>
                     </div>
                   )}
                 </Button>

@@ -2,37 +2,38 @@ import { motion } from "framer-motion";
 import { SiSlack, SiWhatsapp, SiZoom } from "react-icons/si";
 import { MessageCircle } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { useLanguage } from "@/hooks/use-language";
 import { fadeInUp, fadeInLeft, fadeInRight } from "@/lib/animations";
 
-const demos = [
+const getDemos = (t: (key: string) => string) => [
   {
     icon: SiSlack,
-    title: "Slack Integration",
-    description: "Get instant answers and summaries directly in your Slack channels without disrupting the conversation flow.",
+    title: t('demo.slack.title'),
+    description: t('demo.slack.description'),
     color: "text-purple-400",
     image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2039&q=80",
     alt: "Modern Slack interface showing team collaboration",
   },
   {
     icon: MessageCircle,
-    title: "Microsoft Teams",
-    description: "Automatically transcribe and summarize Teams meetings, extracting key decisions and action items.",
+    title: t('demo.teams.title'),
+    description: t('demo.teams.description'),
     color: "text-cyan-400",
     image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     alt: "Professional video conference meeting",
   },
   {
     icon: SiWhatsapp,
-    title: "WhatsApp Business",
-    description: "Bring AI assistance to your WhatsApp Business conversations for quick responses and context.",
+    title: t('demo.whatsapp.title'),
+    description: t('demo.whatsapp.description'),
     color: "text-pink-400",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
     alt: "Business professionals using mobile devices",
   },
   {
     icon: SiZoom,
-    title: "Zoom Meetings",
-    description: "Live meeting assistance with real-time transcription, note-taking, and intelligent insights.",
+    title: t('demo.zoom.title'),
+    description: t('demo.zoom.description'),
     color: "text-purple-400",
     image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     alt: "Professional workspace with video conferencing setup",
@@ -45,6 +46,9 @@ export function ProductDemoSection() {
     triggerOnce: true,
   });
 
+  const { t } = useLanguage();
+  const demos = getDemos(t);
+
   return (
     <section ref={sectionRef} className="py-32 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,10 +59,10 @@ export function ProductDemoSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text-teal">
-            See Nerai in Action
+            {t('demo.title')}
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Experience how Nerai seamlessly integrates into your existing workflow
+            {t('demo.subtitle')}
           </p>
         </motion.div>
 

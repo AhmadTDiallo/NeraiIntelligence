@@ -1,27 +1,28 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { useLanguage } from "@/hooks/use-language";
 import { fadeInUp, staggerChildren } from "@/lib/animations";
 
-const testimonials = [
+const getTestimonials = (t: (key: string) => string) => [
   {
-    content: "Nerai has completely transformed how our remote team collaborates. We never miss important details from meetings anymore.",
+    content: t('testimonials.sarah.content'),
     author: "Sarah Chen",
-    role: "VP of Product, TechCorp",
+    role: t('testimonials.sarah.role'),
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150",
     rating: 5,
   },
   {
-    content: "The stealth mode feature is a game-changer. I can get AI help during client calls without anyone knowing.",
+    content: t('testimonials.maria.content'),
     author: "Maria Rodriguez",
-    role: "Sales Director, StartupXYZ",
+    role: t('testimonials.maria.role'),
     avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150",
     rating: 5,
   },
   {
-    content: "Our productivity increased by 40% after implementing Nerai. It's like having a super-smart assistant in every conversation.",
+    content: t('testimonials.david.content'),
     author: "David Kim",
-    role: "CTO, InnovateNow",
+    role: t('testimonials.david.role'),
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150",
     rating: 5,
   },
@@ -35,6 +36,9 @@ export function TestimonialsSection() {
     triggerOnce: true,
   });
 
+  const { t } = useLanguage();
+  const testimonials = getTestimonials(t);
+
   return (
     <section ref={sectionRef} className="py-32 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,7 +49,7 @@ export function TestimonialsSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
-            What Teams Are Saying
+            {t('testimonials.title')}
           </h2>
         </motion.div>
 

@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect } from "react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { useLanguage } from "@/hooks/use-language";
 import { fadeInUp, staggerChildren } from "@/lib/animations";
 
 interface CounterProps {
@@ -27,29 +28,29 @@ function Counter({ from, to, suffix = "", duration = 2 }: CounterProps) {
   );
 }
 
-const statistics = [
+const getStatistics = (t: (key: string) => string) => [
   {
     value: 10000,
     suffix: "+",
-    label: "Active Teams",
+    label: t('stats.activeTeams'),
     color: "text-purple-400",
   },
   {
     value: 500000,
     suffix: "+",
-    label: "Messages Processed",
+    label: t('stats.messagesProcessed'),
     color: "text-cyan-400",
   },
   {
     value: 95,
     suffix: "%",
-    label: "User Satisfaction",
+    label: t('stats.userSatisfaction'),
     color: "text-pink-400",
   },
   {
     value: 40,
     suffix: "%",
-    label: "Time Saved",
+    label: t('stats.timeSaved'),
     color: "text-purple-400",
   },
 ];
@@ -60,6 +61,9 @@ export function StatisticsSection() {
     triggerOnce: true,
   });
 
+  const { t } = useLanguage();
+  const statistics = getStatistics(t);
+
   return (
     <section ref={sectionRef} className="py-32 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -69,7 +73,7 @@ export function StatisticsSection() {
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          Trusted by Teams Worldwide
+          {t('stats.title')}
         </motion.h2>
 
         <motion.div

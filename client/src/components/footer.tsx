@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Brain, Twitter, Linkedin, Github } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { useLanguage } from "@/hooks/use-language";
 import { fadeInUp, staggerChildren } from "@/lib/animations";
 
 const footerSections = [
@@ -44,6 +45,8 @@ export function Footer() {
     threshold: 0.1,
     triggerOnce: true,
   });
+
+  const { t } = useLanguage();
 
   const scrollToSection = (href: string) => {
     if (href.startsWith("#")) {

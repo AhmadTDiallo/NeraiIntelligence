@@ -118,9 +118,9 @@ const translations: Translations = {
 
     // Statistics Section
     'stats.title': 'Trusted by Teams Worldwide',
-    'stats.teams': 'Active Teams',
-    'stats.messages': 'Messages Processed',
-    'stats.satisfaction': 'User Satisfaction',
+    'stats.activeTeams': 'Active Teams',
+    'stats.messagesProcessed': 'Messages Processed',
+    'stats.userSatisfaction': 'User Satisfaction',
     'stats.timeSaved': 'Time Saved',
 
     // Pricing Section
@@ -137,9 +137,25 @@ const translations: Translations = {
     // Testimonials Section
     'testimonials.title': 'What Teams Are Saying',
     'testimonials.trusted': 'Trusted by innovative companies worldwide',
+    'testimonials.sarah.content': 'Nerai has completely transformed how our remote team collaborates. We never miss important details from meetings anymore.',
+    'testimonials.sarah.role': 'VP of Product, TechCorp',
+    'testimonials.maria.content': 'The stealth mode feature is a game-changer. I can get AI help during client calls without anyone knowing.',
+    'testimonials.maria.role': 'Sales Director, StartupXYZ',
+    'testimonials.david.content': 'Our productivity increased by 40% after implementing Nerai. It\'s like having a super-smart assistant in every conversation.',
+    'testimonials.david.role': 'CTO, InnovateNow',
 
     // FAQ Section
     'faq.title': 'Frequently Asked Questions',
+    'faq.q1': 'How does Nerai integrate with existing platforms?',
+    'faq.a1': 'Nerai connects seamlessly through official APIs and webhooks. Setup takes just a few minutes with our guided installation process.',
+    'faq.q2': 'Is my data secure with Nerai?',
+    'faq.a2': 'Yes, we use bank-level encryption and never store your conversation data. Everything is processed in real-time and discarded immediately after.',
+    'faq.q3': 'Can I use Nerai without others knowing?',
+    'faq.a3': 'Absolutely! Stealth Mode allows you to get AI assistance privately without any visible indication to other participants.',
+    'faq.q4': 'What languages does Nerai support?',
+    'faq.a4': 'Nerai currently supports English, Spanish, French, German, Portuguese, and Italian, with more languages being added regularly.',
+    'faq.q5': 'How accurate are the meeting summaries?',
+    'faq.a5': 'Our AI achieves 95%+ accuracy in meeting transcription and summary generation, continuously improving through machine learning.',
 
     // Footer
     'footer.description': 'AI that lives inside your conversations, making every interaction smarter and more productive.',
@@ -278,9 +294,9 @@ const translations: Translations = {
 
     // Statistics Section
     'stats.title': 'Adopté par des équipes du monde entier',
-    'stats.teams': 'Équipes actives',
-    'stats.messages': 'Messages traités',
-    'stats.satisfaction': 'Satisfaction utilisateur',
+    'stats.activeTeams': 'Équipes actives',
+    'stats.messagesProcessed': 'Messages traités',
+    'stats.userSatisfaction': 'Satisfaction utilisateur',
     'stats.timeSaved': 'Temps économisé',
 
     // Pricing Section
@@ -297,9 +313,25 @@ const translations: Translations = {
     // Testimonials Section
     'testimonials.title': 'Ce que disent les équipes',
     'testimonials.trusted': 'Adopté par des entreprises innovantes du monde entier',
+    'testimonials.sarah.content': 'Nerai a complètement transformé la collaboration de notre équipe distante. Nous ne manquons plus jamais les détails importants des réunions.',
+    'testimonials.sarah.role': 'VP Produit, TechCorp',
+    'testimonials.maria.content': 'La fonction mode furtif change la donne. Je peux obtenir de l\'aide IA pendant les appels clients sans que personne ne le sache.',
+    'testimonials.maria.role': 'Directrice des ventes, StartupXYZ',
+    'testimonials.david.content': 'Notre productivité a augmenté de 40% après avoir implémenté Nerai. C\'est comme avoir un assistant super intelligent dans chaque conversation.',
+    'testimonials.david.role': 'CTO, InnovateNow',
 
     // FAQ Section
     'faq.title': 'Questions fréquemment posées',
+    'faq.q1': 'Comment Nerai s\'intègre-t-il aux plateformes existantes ?',
+    'faq.a1': 'Nerai se connecte facilement via les APIs officielles et webhooks. L\'installation ne prend que quelques minutes avec notre processus guidé.',
+    'faq.q2': 'Mes données sont-elles sécurisées avec Nerai ?',
+    'faq.a2': 'Oui, nous utilisons un chiffrement de niveau bancaire et ne stockons jamais vos données de conversation. Tout est traité en temps réel puis supprimé.',
+    'faq.q3': 'Puis-je utiliser Nerai sans que les autres le sachent ?',
+    'faq.a3': 'Absolument ! Le mode furtif vous permet d\'obtenir une assistance IA en privé sans aucune indication visible pour les autres participants.',
+    'faq.q4': 'Quelles langues Nerai supporte-t-il ?',
+    'faq.a4': 'Nerai supporte actuellement l\'anglais, l\'espagnol, le français, l\'allemand, le portugais et l\'italien, avec d\'autres langues ajoutées régulièrement.',
+    'faq.q5': 'Quelle est la précision des résumés de réunion ?',
+    'faq.a5': 'Notre IA atteint 95%+ de précision dans la transcription et génération de résumés de réunions, s\'améliorant continuellement grâce à l\'apprentissage automatique.',
 
     // Footer
     'footer.description': 'IA qui vit dans vos conversations, rendant chaque interaction plus intelligente et productive.',
